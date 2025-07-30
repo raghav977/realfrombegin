@@ -78,7 +78,7 @@ class AssignmentSubmissionSerializer(serializers.ModelSerializer):
         model = AssignmentSubmission
         fields = [
             'id', 'assignment', 'assignment_title', 'student', 'student_name',
-            'submission_date', 'submission_file', 'remarks', 'marks_obtained', 'is_graded'
+            'submission_date', 'submission_file', 'remarks'
         ]
         read_only_fields = ['student', 'submission_date']
 
@@ -86,4 +86,4 @@ class AssignmentSubmissionSerializer(serializers.ModelSerializer):
 class GradeSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentSubmission
-        fields = ['remarks', 'marks_obtained', 'is_graded']
+        fields = ['remarks', 'marks_obtained', 'is_graded','assignment','student']

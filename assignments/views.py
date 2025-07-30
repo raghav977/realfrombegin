@@ -64,8 +64,13 @@ class StudentAssignmentListView(generics.ListAPIView):
 
     def get_queryset(self):
         student = self.request.user.user_student
+        student_classroom = student.section.class_room
+        student_section = student.section.section
+        
+
         return Assignment.objects.filter(
-            section=student.section,
+            
+            teacher_subject_section__section=student_section,teacher_subject_section__class_subject__class_obj=student_classroom,
             is_published=True
         ).order_by('-due_date')
 
@@ -145,7 +150,7 @@ class GradeSubmissionView(generics.UpdateAPIView):
 
     def get_queryset(self):
         teacher = self.request.user.user_teacher
-        return AssignmentSubmission.objects.filter(assignment__teacher=teacher)
+        return AssignmentSubmission.objects.filter(assignment__teacher_subject_section__teacher=teacher)
 
     def update(self, request, *args, **kwargs):
         submission = self.get_object()

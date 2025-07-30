@@ -28,7 +28,7 @@ urlpatterns = [
     path('create/',include('school.urls')),
     path('class/',include('classes.urls')),
     path('subject/',include('subjects.urls')),
-    # path('exam/', include('exam.urls')),
+    path('exam/', include('exam.urls')),
 
     path('dashboard/', include('dashboard.urls')),
 
@@ -36,6 +36,6 @@ urlpatterns = [
     path('class-teacher/',include('section.urls')),
     path('attendance/', include('attendance.urls')),
     path('assignment/',include('assignments.urls')),
-    # path('result/', include('result.urls')),
+    path('result/', include('result.urls')),
 
 ]
